@@ -1239,7 +1239,7 @@
                         </div>
                         <div class="cert-btns">
 
-                            <a href="C:\Users\Rachapallivenu\Desktop\prot\Venu Wipro.pdf" class="cert-btn">
+                            <a href="Venu Wipro.pdf" class="cert-btn" target="_blank">
                                 <i class="fas fa-external-link-alt"></i> View Credential                            </a>
                         </div>
                     </div>
@@ -1262,7 +1262,7 @@
                         </div>
                         <div class="cert-btns">
                            
-                            <a href="C:\Users\Rachapallivenu\Desktop\prot\3-1-A-208r1a0548-cpp.pdf" class="cert-btn">
+                            <a href="3-1-A-208r1a0548-cpp.pdf" class="cert-btn" target="_blank">
                                 <i class="fas fa-external-link-alt"></i> View Credential
                             </a>
                         </div>
@@ -1285,7 +1285,7 @@
                         </div>
                         <div class="cert-btns">
                            
-                            <a href="C:\Users\Rachapallivenu\Desktop\prot\Rachapallivenu-III-A CSE CCNA-1-letter.pdf" class="cert-btn">
+                            <a href="Rachapallivenu-III-A CSE CCNA-1-letter.pdf" class="cert-btn" target="_blank">
                                <i class="fas fa-external-link-alt"></i> View Credential
                             </a>
                         </div>
@@ -1308,7 +1308,7 @@
                             <p>● Training organized and invigilated at CMR Engineering College under certified supervision as part of technical skill development initiative.</p>
                         </div>
                         <div class="cert-btns">
-                            <a href="C:\Users\Rachapallivenu\Desktop\prot\VENU-RACHAPALLI-Participant-Certificate.pdf" class="cert-btn">
+                            <a href="VENU-RACHAPALLI-Participant-Certificate.pdf" class="cert-btn" target="_blank">
                                 <i class="fas fa-external-link-alt"></i> View Credential
                             </a>
                            
@@ -1549,16 +1549,7 @@
                     <a href="https://www.linkedin.com/in/rachapalli-venu-1bb796267/" class="social-icon">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
-                    <ul class="nav-links" id="navLinks">
-                    <li><a href="#home" class="active">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#education">Education</a></li>
-                    <li><a href="#certifications">Certifications</a></li> <!-- Added Certifications link -->
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                    
+                    <!-- Navigation links removed from footer -->
                 </div>
                 <div class="copyright">
                     &copy; 2025 Venu rachapalli. All Rights Reserved.
@@ -1596,12 +1587,25 @@
                 }
             });
             
-            // Close mobile menu when clicking on a link
+            // Close mobile menu when clicking on a link and smooth scroll
             document.querySelectorAll('.nav-links a').forEach(link => {
-                link.addEventListener('click', () => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
                     navLinks.classList.remove('active');
                     hamburger.innerHTML = '<i class="fas fa-bars"></i>';
                     backdrop.style.display = 'none';
+
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        setTimeout(() => {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                        }, 300); // Wait for menu to close
+                    }
                 });
             });
             
@@ -1633,24 +1637,6 @@
                 window.scrollTo({
                     top: 0,
                     behavior: 'smooth'
-                });
-            });
-            
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
                 });
             });
             
